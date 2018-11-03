@@ -10,7 +10,6 @@ export class RowEmployeeComponent implements OnInit {
 
   @Input('data') employee: Employee;
   @Input('index') index: string;
-  @Input('num') num: number;
 
   constructor() { }
 

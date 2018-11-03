@@ -14,7 +14,7 @@ import {FormComponent} from "../form/form.component";
 export class InfoComponent implements OnInit {
 
   employee: Employee;
-  index: string = this.route.snapshot.params['id'];
+  index: number = +this.route.snapshot.params['id'];
 
   constructor(
     private detailsService: DetailsService,
@@ -24,20 +24,10 @@ export class InfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.addInfo()
+    this.employee = this.detailsService.employees[this.index];
   }
 
-  searchThisEmployee(index) {
-    for (let k in this.detailsService.employees) {
-      if (this.detailsService.employees[k].key === index) {
-        return this.detailsService.employees[k];
-      }
-    }
-  }
 
-  addInfo() {
-    this.employee = this.searchThisEmployee(this.index);
-  }
 
   delEmployee() {
     this.detailsService.delEmployee(this.index);

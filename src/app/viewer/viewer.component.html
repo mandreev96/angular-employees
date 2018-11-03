@@ -1,6 +1,7 @@
 
 <div class="container wrapper">
   <div class="row head_wrap">
+    <button (click)="checkEmployees()">check</button>
     <h2>Company employees</h2>
     <button type="button" mat-raised-button (click)="openForm()" class="btn btn-success">Add employee</button>
   </div>
@@ -11,15 +12,14 @@
     <div class="col-2">Должность</div>
   </div>
   <ul class="list-group list_height">
-    <li *ngFor="let employee of employees; let num = index"
-        class="content_row__wrapper">
+    <li *ngFor="let employee of employees; let index = index"
+        class="content_row__wrapper"
+        [ngStyle] = "{'backgroundColor': (index % 2 === 0) ? '#efefef' : '#ffffff'}">
       <app-row-employee
-          [ngStyle] = " {'backgroundColor': (index % 2 === 0) ? '#efefef' : '#fffff'}"
-          [routerLink]="['/info', employee.key]"
+          [routerLink]="['/info', index]"
           class="content_row__data"
           [data]="employee"
-          [index]="employee.key"
-          [num]="num">
+          [index]="index">
       </app-row-employee>
     </li>
   </ul>

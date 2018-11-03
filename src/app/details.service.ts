@@ -1,6 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Employee} from "./employee";
 import {AngularFireDatabase} from "@angular/fire/database";
+import {Promise} from "q";
+import {promise} from "selenium-webdriver";
 
 @Injectable({
   providedIn:  'root'
@@ -207,34 +209,33 @@ export class DetailsService {
   //  }
   //];
 
-  employees: Employee[] = [];
+  employees;
   employeesObj;
 
   constructor(private db: AngularFireDatabase)  {}
 
-  readEmployees() {
-    this.employees = [];
-    this.db.list('/').valueChanges().subscribe((data) => {
-      this.employeesObj = data;
-      for (let key in this.employeesObj[0]) {
-        this.employees.push(this.employeesObj[0][`${key}`]);
-        this.employees[this.employees.length-1].key = key;
-      }
-    })
+  getEmployees(employees) {
+    this.employees = employees;
+  }
+
+  getEmployeesObj(employeesObj) {
+    this.employeesObj = employeesObj;
   }
 
   addEmployee(employee: Employee) {
     this.db.list('/employees').push(employee);
+    console.log('details')
+    console.log(employee)
   }
 
-  delEmployee(index: string) {
+  delEmployee(index: number) {
     console.log(index);
-    this.db.list('/employees').remove(index);
+    this.db.list('/employees').remove(this.employeesObj[index].key);
   }
 
-  editEmployee(index: string, employee: Employee) {
+  editEmployee(index: number, employee: Employee) {
     console.log(index, employee)
-    this.db.list('/employees').update(index, employee)
+    this.db.list('/employees').update(this.employeesObj[index].key, employee)
   }
 
 }

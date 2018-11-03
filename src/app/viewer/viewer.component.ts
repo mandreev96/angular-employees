@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DetailsService} from "../details.service";
 import {Employee} from "../employee";
 import {MatDialog} from "@angular/material";
@@ -13,25 +13,34 @@ import {Observable} from "rxjs/internal/Observable";
 })
 export class ViewerComponent implements OnInit {
 
-  employees: Employee[];
+  employees;
   init: Observable<any[]>;
+  employeesObj;
+
 
   constructor(
     private detailsService: DetailsService,
     public dialog: MatDialog,
     private db: AngularFireDatabase) {
-    this.init = db.list('/').valueChanges();
   }
 
   ngOnInit() {
-    this.detailsService.readEmployees();
-    this.employees = this.detailsService.employees;
-    console.log(this.detailsService.employees)
+    this.db.list('/employees').valueChanges().subscribe((data) => {
+      this.employees = data;
+      this.detailsService.getEmployees(this.employees);
+    });
+    this.db.list('/employees').snapshotChanges().subscribe((data) => {
+      this.employeesObj = data;
+      this.detailsService.getEmployeesObj(this.employeesObj);
+    })
   }
 
+  checkEmployees(){
+    console.log(this.employees);
+    console.log(this.employeesObj);
+  }
 
   openForm() {
     this.dialog.open(FormComponent, {data: {edit: false, employee: Employee}})
   }
-
 }
