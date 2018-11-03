@@ -21,8 +21,7 @@ export class FormComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-    console.log(this.data);
-    console.log(this.form.value);
+
   }
 
 

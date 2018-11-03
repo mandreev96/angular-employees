@@ -224,17 +224,13 @@ export class DetailsService {
 
   addEmployee(employee: Employee) {
     this.db.list('/employees').push(employee);
-    console.log('details')
-    console.log(employee)
   }
 
   delEmployee(index: number) {
-    console.log(index);
     this.db.list('/employees').remove(this.employeesObj[index].key);
   }
 
   editEmployee(index: number, employee: Employee) {
-    console.log(index, employee)
     this.db.list('/employees').update(this.employeesObj[index].key, employee)
   }
 

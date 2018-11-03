@@ -35,10 +35,7 @@ export class ViewerComponent implements OnInit {
     })
   }
 
-  checkEmployees(){
-    console.log(this.employees);
-    console.log(this.employeesObj);
-  }
+
 
   openForm() {
     this.dialog.open(FormComponent, {data: {edit: false, employee: Employee}})
