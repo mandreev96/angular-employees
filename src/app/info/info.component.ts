@@ -27,7 +27,9 @@ export class InfoComponent implements OnInit {
     this.employee = this.detailsService.employees[this.index];
   }
 
-
+  parseDate(date){
+    return this.detailsService.parseDate(date)
+  }
 
   delEmployee() {
     this.detailsService.delEmployee(this.index);

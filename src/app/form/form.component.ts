@@ -14,20 +14,41 @@ export class FormComponent implements OnInit {
   @ViewChild('formTag') formTag;
   @ViewChild('form') form;
   employee: Employee;
+  defaultFirstName: string;
+  defaultSurName: string;
+  defaultPatronymic: string;
+  defaultPosition: string;
+  defaultDateOfBirth: string;
+  defaultState: string;
+  defaultComment: string = "";
+
 
   constructor(private matDialogRef: MatDialogRef<FormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private details: DetailsService,
-              private location: Location) { }
+              private location: Location) {}
 
   ngOnInit() {
-
+    this.setDefaultValues()
+    console.log(this.defaultDateOfBirth)
   }
 
+  setDefaultValues() {
+    if (this.data.edit === true) {
+      this.defaultFirstName = this.data.employee.firstName;
+      this.defaultSurName = this.data.employee.surName;
+      this.defaultPatronymic = this.data.employee.patronymic;
+      this.defaultPosition = this.data.employee.position;
+      this.defaultState = this.data.employee.state ? 'Работает' : 'Уволен';
+      this.defaultDateOfBirth = this.data.employee.dateOfBirth;
+      this.defaultComment = this.data.employee.comment;
+    }
+  }
 
   closeForm() {
     this.matDialogRef.close();
   }
+
 
 
   addEmployee() {

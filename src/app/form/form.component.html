@@ -2,50 +2,50 @@
 <form class="appForm" #form="ngForm" #formTag>
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="form_firstName">Имя</label>
-      <input required type="text" class="form-control" id="form_firstName" placeholder="Имя" ngModel name="firstName">
+      <label for="form_surName">Фамилия</label>
+      <input required type="text" class="form-control" id="form_surName" placeholder="Фамилия" [ngModel]="defaultSurName" name="surName" >
     </div>
     <div class="form-group col-md-4">
-      <label for="form_surName">Фамилия</label>
-      <input required type="text" class="form-control" id="form_surName" placeholder="Фамилия" ngModel name="surName">
+      <label for="form_firstName">Имя</label>
+      <input required type="text" class="form-control" id="form_firstName" placeholder="Имя" [ngModel]="defaultFirstName" name="firstName">
     </div>
     <div class="form-group col-md-4">
       <label for="patronymic">Отчество</label>
-      <input required type="text" class="form-control" id="patronymic" placeholder="Отчетство" ngModel name="patronymic">
+      <input required type="text" class="form-control" id="patronymic" placeholder="Отчетство" [ngModel]="defaultPatronymic" name="patronymic">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="form_position">Должность</label>
-      <select required id="form_position" class="form-control" ngModel name="position">
-        <option selected>Вратарь</option>
-        <option>Защитник</option>
-        <option>Полузащитник</option>
-        <option>Нападающий</option>
+      <select required id="form_position" class="form-control" [ngModel]="defaultPosition" name="position">
+        <option selected value="Вратарь">Вратарь</option>
+        <option value="Защитник">Защитник</option>
+        <option value="Полузащитник">Полузащитник</option>
+        <option value="Нападающий">Нападающий</option>
       </select>
     </div>
     <div class="form-group col-md-4">
       <label for="form_dateOfBirth">Дата рождения</label>
-      <input required type="date" class="form-control" id="form_dateOfBirth" ngModel name="dateOfBirth">
+      <input required type="date" class="form-control" id="form_dateOfBirth" [ngModel]="defaultDateOfBirth" name="dateOfBirth">
     </div>
     <div class="form-group col-md-4">
       <label for="form_state">Статус</label>
-      <select required id="form_state" class="form-control" ngModel name="state">
-        <option selected>Работает</option>
-        <option>Уволен</option>
+      <select required id="form_state" class="form-control" [ngModel]="defaultState" name="state">
+        <option selected value="Работает">Работает</option>
+        <option value="Уволен">Уволен</option>
       </select>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-5">
       <label for="form_comments">Комментарии</label>
-      <input type="text" class="form-control" id="form_comments" placeholder="Необязательно" ngModel name="comment">
+      <input type="text" class="form-control" id="form_comments" placeholder="Необязательно" [ngModel]="defaultComment" name="comment">
     </div>
   </div>
 
   <div class="form_buttons">
-    <button *ngIf="!data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="addEmployee()">Sign in</button>
-    <button *ngIf="data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="editEmployee()">Save</button>
-    <button (click)="closeForm()" type="reset" class="btn btn-secondary">Cancel</button>
+    <button *ngIf="!data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="addEmployee()">Добавить</button>
+    <button *ngIf="data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="editEmployee()">Сохранить</button>
+    <button (click)="closeForm()" type="reset" class="btn btn-secondary">Отменить</button>
   </div>
 </form>

@@ -214,6 +214,11 @@ export class DetailsService {
 
   constructor(private db: AngularFireDatabase)  {}
 
+
+  parseDate(date) {
+    return date.slice(8,10)+'.'+date.slice(5,7)+'.'+date.slice(0,4);
+  }
+
   getEmployees(employees) {
     this.employees = employees;
   }
