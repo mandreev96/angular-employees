@@ -3,23 +3,30 @@
     <i class="fa fa-arrow-left" aria-hidden="true"></i>
   </div>
   <!-- -->
-  <div class="info_photo"></div>
-  <div class="info_name">
-     <h3> {{employee.surName}} {{employee.firstName}} <br> {{employee.patronymic}}</h3>
+  <div class="info_photo">
+    <i class="fa fa-camera info_camera" aria-hidden="true"></i>
   </div>
-  <div class="info_other">
-    <div class="info_date">
-      Дата рождения: {{parseDate(employee.dateOfBirth)}}
+  <div class="info_mainBox">
+    <div class="info_name">
+      <h3> {{employee.surName}} {{employee.firstName}} <br> {{employee.patronymic}}</h3>
     </div>
-    <div class="info_position">
-      Должность: {{employee.position}}
+    <div class="info_other">
+      <div class="info_date">
+        Дата рождения: {{parseDate(employee.dateOfBirth)}}
+      </div>
+      <div class="info_position">
+        Должность: {{employee.position}}
+      </div>
+      <div class="info_state">
+        Статус: {{(employee.state) ? 'Работает' : 'Уволен'}}
+      </div>
+      <div *ngIf="employee.comment" class="info_comment">
+        Комментарии: {{employee.comment}}
+      </div>
     </div>
-    <div class="info_state">
-      Статус: {{(employee.state) ? 'Работает' : 'Уволен'}}
+    <div class="info_buttons">
+      <button type="button" class="btn btn-warning" (click)="openForm()">Изменить</button>
+      <button type="button" class="btn btn-danger" (click)="askDelete()">Удалить</button>
     </div>
-  </div>
-  <div class="info_buttons">
-    <button type="button" class="btn btn-warning" (click)="openForm()">Изменить</button>
-    <button type="button" class="btn btn-danger" (click)="delEmployee()">Удалить</button>
   </div>
 </div>

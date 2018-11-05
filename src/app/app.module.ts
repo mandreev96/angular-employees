@@ -14,6 +14,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { AskDeleteComponent } from './ask-delete/ask-delete.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import {environment} from "../environments/environment";
     ViewerComponent,
     InfoComponent,
     RowEmployeeComponent,
-    FormComponent
+    FormComponent,
+    AskDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +37,11 @@ import {environment} from "../environments/environment";
     MatButtonModule,
     MatCheckboxModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FormComponent]
+  entryComponents: [FormComponent, AskDeleteComponent]
 })
 export class AppModule { }

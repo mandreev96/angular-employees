@@ -16,12 +16,13 @@ export class ViewerComponent implements OnInit {
   employees;
   init: Observable<any[]>;
   employeesObj;
-
+  stateAlert: {state: boolean, message: string};
 
   constructor(
     private detailsService: DetailsService,
     public dialog: MatDialog,
     private db: AngularFireDatabase) {
+    this.stateAlert = this.detailsService.stateAlert;
   }
 
   ngOnInit() {
@@ -34,7 +35,6 @@ export class ViewerComponent implements OnInit {
       this.detailsService.getEmployeesObj(this.employeesObj);
     })
   }
-
 
 
   openForm() {

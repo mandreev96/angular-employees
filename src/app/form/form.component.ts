@@ -4,6 +4,8 @@ import {DetailsService} from "../details.service";
 import {Employee} from "../employee";
 import {Location} from "@angular/common";
 
+import * as firebase from 'firebase'
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -30,7 +32,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.setDefaultValues()
-    console.log(this.defaultDateOfBirth)
   }
 
   setDefaultValues() {
@@ -62,6 +63,14 @@ export class FormComponent implements OnInit {
     this.details.editEmployee(this.data.index, this.form.value);
     this.matDialogRef.close();
     this.location.back();
+  }
+
+
+
+  selectedPicture(event: any) {
+    const file: File = event.target.files[0];
+    const storageRef: firebase.storage.Reference = firebase.storage().ref().child(`/photos/${file.name}`);
+    console.log(storageRef);
   }
 
 }

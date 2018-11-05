@@ -9,11 +9,26 @@
 }
 
 .info_photo {
-  background: #747474;
+  background: #d2dff7;
   width: 150px;
   height: 150px;
   border-radius: 100%;
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #5754f717;
+}
+
+.info_camera {
+  font-size: 48px;
+  display: block;
+  color: #212153c9;
+}
+
+.info_mainBox {
+  text-align: center;
+  margin-top: 10px;
 }
 
 .info_name {
@@ -28,10 +43,14 @@
   cursor: pointer;
 }
 
+.info_back:hover {
+  top: 12px;
+}
+
 .info_buttons {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
   margin-bottom: 50px;
-
+  flex-basis: 50%;
 }

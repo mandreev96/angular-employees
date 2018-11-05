@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {MatDialog} from "@angular/material";
 import {FormComponent} from "../form/form.component";
+import {AskDeleteComponent} from "../ask-delete/ask-delete.component";
 
 @Component({
   selector: 'app-info',
@@ -31,9 +32,8 @@ export class InfoComponent implements OnInit {
     return this.detailsService.parseDate(date)
   }
 
-  delEmployee() {
-    this.detailsService.delEmployee(this.index);
-    this.location.back();
+  askDelete() {
+    this.dialog.open(AskDeleteComponent, {data: {index: this.index}})
   }
 
   goBack() {

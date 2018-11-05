@@ -47,7 +47,7 @@
 
 .list_height {
   list-style-type: none;
-  height: 313px;
+  height: 315px;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   overflow: scroll;
@@ -55,4 +55,31 @@
 
 .list_height::-webkit-scrollbar {
   width: 0;
+}
+
+.alert-message {
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  min-width: 100px;
+  min-height: 50px;
+  width: 20%;
+  height: 10%;
+  text-align: center;
+  position: absolute;
+  top: 80%;
+  left: 75% ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-message > p {
+  margin: 0;
+}
+
+.noView {
+  opacity: 0;
+  transition: 0.8s;
+  cursor: default;
 }

@@ -6,7 +6,8 @@ import {InfoComponent} from "./info/info.component";
 const routes: Routes = [
   {path: '', component: ViewerComponent},
   {path: 'info/:id', component: InfoComponent},
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: ''},
+  {path: 'not-found', redirectTo: ''}
 ];
 
 @NgModule({

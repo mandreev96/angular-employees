@@ -211,6 +211,7 @@ export class DetailsService {
 
   employees;
   employeesObj;
+  stateAlert: {state: boolean, message: string} = {state: true, message: ''};
 
   constructor(private db: AngularFireDatabase)  {}
 
@@ -229,14 +230,32 @@ export class DetailsService {
 
   addEmployee(employee: Employee) {
     this.db.list('/employees').push(employee);
+    this.changeAlertState(1)
   }
 
   delEmployee(index: number) {
     this.db.list('/employees').remove(this.employeesObj[index].key);
+    this.changeAlertState(3)
   }
 
   editEmployee(index: number, employee: Employee) {
     this.db.list('/employees').update(this.employeesObj[index].key, employee)
+    this.changeAlertState(2)
   }
 
+
+  // 1 - add, 2 - edit, 3 - delete
+  changeAlertState(typeMessage: number) {
+    this.stateAlert.state = false;
+    if (typeMessage === 1) {
+        this.stateAlert.message = 'Запись добавлена!';
+    } else if (typeMessage === 2) {
+        this.stateAlert.message = 'Запись изменена!';
+    } else if (typeMessage === 3) {
+        this.stateAlert.message = 'Запись удалена!';
+      }
+    setTimeout(() => {
+      this.stateAlert.state = true;
+    }, 3000)
+  }
 }

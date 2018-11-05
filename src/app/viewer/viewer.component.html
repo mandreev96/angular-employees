@@ -22,4 +22,8 @@
       </app-row-employee>
     </li>
   </ul>
+  <div class="alert-success alert-message"
+  [ngClass]="{'noView': stateAlert.state}">
+    <p>{{stateAlert.message}}</p>
+  </div>
 </div>
