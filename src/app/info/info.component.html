@@ -4,7 +4,8 @@
   </div>
   <!-- -->
   <div class="info_photo">
-    <i class="fa fa-camera info_camera" aria-hidden="true"></i>
+    <i *ngIf="!urlImage.url" class="fa fa-camera info_camera" aria-hidden="true"></i>
+    <img class="info_image" [src]="urlImage.url" alt="">
   </div>
   <div class="info_mainBox">
     <div class="info_name">

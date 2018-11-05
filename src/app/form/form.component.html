@@ -36,6 +36,12 @@
       </select>
     </div>
   </div>
+
+  <div class="form_buttons_photo" *ngIf="defaultImage">
+    <button type="button" (click)="updatePhoto()" class="btn btn-secondary">Обновить фотографию</button>
+    <button type="button" (click)="askDeleteImage()" class="btn btn-danger">Удалить фотографию</button>
+  </div>
+
   <div class="form-row">
     <div class="form-group col-md-5">
       <label for="form_comments">Комментарии</label>
@@ -43,9 +49,10 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <div class="form-group">
-      <input type="file" (change)="selectedPicture($event)" [accept]="'image/jpeg,image/png'">
+  <div class="form-row form-row_flex" *ngIf="!defaultImage">
+    <div class="form-group form_photo">
+      <p>Добавить фотографию:</p>
+      <input type="file" ngModel name="imageState" (change)="selectedPicture($event)" [accept]="'image/jpeg,image/png'">
     </div>
   </div>
 

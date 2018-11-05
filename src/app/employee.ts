@@ -8,4 +8,5 @@ export class Employee {
   comment: string | null;
   photo: string | null;
   key?: string;
+  image: boolean;
 }

@@ -14,16 +14,23 @@
   height: 150px;
   border-radius: 100%;
   margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: 2px solid #5754f717;
+  position: relative;
 }
 
 .info_camera {
   font-size: 48px;
   display: block;
   color: #212153c9;
+  position: absolute;
+  top: 35%;
+  left: 33%;
+}
+
+.info_image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
 }
 
 .info_mainBox {
@@ -54,3 +61,4 @@
   margin-bottom: 50px;
   flex-basis: 50%;
 }
+

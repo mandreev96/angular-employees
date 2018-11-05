@@ -16,11 +16,17 @@ export class AskDeleteComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-
+    console.log(this.data.userDelete)
   }
 
   delete() {
-    this.details.delEmployee(this.data.index);
+    this.details.delEmployee(this.data.index, this.data.hasImage);
+    this.matDialogRef.close();
+    this.location.back();
+  }
+
+  deleteImage() {
+    this.details.deleteImage(this.data.index);
     this.matDialogRef.close();
     this.location.back();
   }

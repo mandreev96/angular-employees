@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {DetailsService} from "../details.service";
 import {Employee} from "../employee";
 import {Location} from "@angular/common";
+import {AskDeleteComponent} from "../ask-delete/ask-delete.component";
 
-import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-form',
@@ -23,12 +23,16 @@ export class FormComponent implements OnInit {
   defaultDateOfBirth: string;
   defaultState: string;
   defaultComment: string = "";
+  defaultImage: boolean;
+
+  imageFile: File;
 
 
   constructor(private matDialogRef: MatDialogRef<FormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private details: DetailsService,
-              private location: Location) {}
+              private location: Location,
+              private dialog: MatDialog) {}
 
   ngOnInit() {
     this.setDefaultValues()
@@ -43,6 +47,7 @@ export class FormComponent implements OnInit {
       this.defaultState = this.data.employee.state ? 'Работает' : 'Уволен';
       this.defaultDateOfBirth = this.data.employee.dateOfBirth;
       this.defaultComment = this.data.employee.comment;
+      this.defaultImage = this.data.employee.image;
     }
   }
 
@@ -53,24 +58,32 @@ export class FormComponent implements OnInit {
 
 
   addEmployee() {
-    this.details.addEmployee(this.form.value);
+    if (this.imageFile) this.form.value.image = true;
+    else this.form.value.image = false;
+    this.details.addEmployee(this.form.value, this.imageFile);
     this.matDialogRef.close();
+  }
+
+  selectedPicture(event: any) {
+    this.imageFile = event.target.files[0];
   }
 
 
   editEmployee() {
-    this.form.value.key = this.data.index;
-    this.details.editEmployee(this.data.index, this.form.value);
+    if (this.imageFile) this.form.value.image = true;
+    else this.form.value.image = false;
+    this.details.editEmployee(this.data.index, this.form.value, this.imageFile);
     this.matDialogRef.close();
     this.location.back();
   }
 
-
-
-  selectedPicture(event: any) {
-    const file: File = event.target.files[0];
-    const storageRef: firebase.storage.Reference = firebase.storage().ref().child(`/photos/${file.name}`);
-    console.log(storageRef);
+  askDeleteImage() {
+    this.dialog.open(AskDeleteComponent, {data: {userDelete: false, hasImage: true, index: this.data.index}})
   }
+
+  updatePhoto() {
+    this.defaultImage = false;
+  }
+
 
 }

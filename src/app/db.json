@@ -8,7 +8,7 @@
       "position":"Вратарь",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Антон",
@@ -18,7 +18,7 @@
       "position":"Вратарь",
       "state":true,
       "comment":"Динамо",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Георгий",
@@ -28,7 +28,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"Спартак",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Федор",
@@ -38,7 +38,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"Рубин",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Эльмир",
@@ -48,7 +48,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Константин",
@@ -58,7 +58,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"Динамо",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Игорь",
@@ -68,7 +68,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Марио",
@@ -78,7 +78,7 @@
       "position":"Защитник",
       "state":true,
       "comment":"ЦСКА",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Юрий",
@@ -88,7 +88,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Краснодар",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Александр",
@@ -98,7 +98,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Роман",
@@ -108,7 +108,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Спартак",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Алексей",
@@ -118,7 +118,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Ростов",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Далер",
@@ -128,7 +128,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Денис",
@@ -138,7 +138,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Валенсия",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Александр",
@@ -148,7 +148,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Монако",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Алексей",
@@ -158,7 +158,7 @@
       "position":"Полузащитник",
       "state":true,
       "comment":"Локомотив",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Артем",
@@ -168,7 +168,7 @@
       "position":"Нападающий",
       "state":true,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Антон",
@@ -178,7 +178,7 @@
       "position":"Нападающий",
       "state":true,
       "comment":"Гений",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Александр",
@@ -188,7 +188,7 @@
       "position":"Нападающий",
       "state":false,
       "comment":"Зенит",
-      "photo":""
+      "image": false
     },
     {
       "firstName":"Федор",
@@ -198,7 +198,7 @@
       "position":"Нападающий",
       "state":true,
       "comment":"ЦСКА",
-      "photo":""
+      "image": false
     }
   ]
 }

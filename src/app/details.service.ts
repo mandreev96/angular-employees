@@ -1,8 +1,7 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Employee} from "./employee";
 import {AngularFireDatabase} from "@angular/fire/database";
-import {Promise} from "q";
-import {promise} from "selenium-webdriver";
+import * as firebase from 'firebase'
 
 @Injectable({
   providedIn:  'root'
@@ -212,8 +211,13 @@ export class DetailsService {
   employees;
   employeesObj;
   stateAlert: {state: boolean, message: string} = {state: true, message: ''};
+  stateUrl: {url: string} = {url: ''};
 
-  constructor(private db: AngularFireDatabase)  {}
+  storageRef: firebase.storage.Reference = firebase.storage().ref();
+
+  constructor(private db: AngularFireDatabase)  {
+
+  }
 
 
   parseDate(date) {
@@ -228,21 +232,62 @@ export class DetailsService {
     this.employeesObj = employeesObj;
   }
 
-  addEmployee(employee: Employee) {
-    this.db.list('/employees').push(employee);
+  addEmployee(employee: Employee, file: any) {
+    this.db.list('/employees').push(employee)
+      .then(() => {
+        if (file) {
+          this.storageRef.child(`/photos/${this.employeesObj[this.employeesObj.length-1].key}`).put(file);
+        }
+      });
     this.changeAlertState(1)
   }
 
-  delEmployee(index: number) {
+  getImage(hasImage, key) {
+    if (hasImage) {
+      this.storageRef.child(`/photos/${this.employeesObj[key].key}`)
+        .getDownloadURL()
+        .then((url) => {
+          this.stateUrl.url = url;
+        })
+        .catch((error) => {
+          console.log('no image')
+        })
+    }
+  }
+
+  delEmployee(index: number, hasImage: boolean) {
     this.db.list('/employees').remove(this.employeesObj[index].key);
-    this.changeAlertState(3)
+    if (hasImage) {
+      this.storageRef.child(`/photos/${this.employeesObj[index].key}`).delete()
+        .catch((error) => {
+          console.log('Не удалось удалить')
+        })
+    }
+    this.changeAlertState(3);
   }
 
-  editEmployee(index: number, employee: Employee) {
+  editEmployee(index: number, employee: Employee, file: File) {
     this.db.list('/employees').update(this.employeesObj[index].key, employee)
-    this.changeAlertState(2)
+      .then(() => {
+        if (file) {
+          this.storageRef.child(`/photos/${this.employeesObj[index].key}`).put(file);
+        }
+      });
+    this.changeAlertState(2);
   }
 
+  deleteImage(index: number) {
+    this.storageRef.child(`/photos/${this.employeesObj[index].key}`).delete()
+      .catch((error) => {
+        console.log('Ошибка при удалении')
+      })
+      .then(() => {
+        this.db.list(`/employees/${this.employeesObj[index].key}`).set('image', false)
+      })
+      .then(() => {
+        this.changeAlertState(4)
+      })
+  }
 
   // 1 - add, 2 - edit, 3 - delete
   changeAlertState(typeMessage: number) {
@@ -253,7 +298,9 @@ export class DetailsService {
         this.stateAlert.message = 'Запись изменена!';
     } else if (typeMessage === 3) {
         this.stateAlert.message = 'Запись удалена!';
-      }
+    } else if (typeMessage === 4) {
+      this.stateAlert.message = 'Фотография удалена'
+    }
     setTimeout(() => {
       this.stateAlert.state = true;
     }, 3000)

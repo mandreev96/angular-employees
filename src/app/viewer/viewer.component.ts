@@ -40,4 +40,6 @@ export class ViewerComponent implements OnInit {
   openForm() {
     this.dialog.open(FormComponent, {data: {edit: false, employee: Employee}})
   }
+
+
 }

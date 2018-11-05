@@ -1,7 +1,8 @@
 <div>
-  <p>Удалить данные пользователя?</p>
+  <p>{{(this.data.userDelete) ? 'Удалить данные пользователя?' : 'Удалить фотографию пользователя'}}</p>
   <div class="ask_buttons">
-    <button class="btn btn-danger" (click)="delete()">Удалить</button>
+    <button class="btn btn-danger" *ngIf="this.data.userDelete" (click)="delete()">Удалить</button>
+    <button class="btn btn-danger" *ngIf="!this.data.userDelete" (click)="deleteImage()">Удалить</button>
     <button class="btn btn-light" (click)="cancel()">Отмена</button>
   </div>
 </div>
