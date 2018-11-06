@@ -3,22 +3,23 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="form_surName">Фамилия</label>
-      <input required type="text" class="form-control" id="form_surName" placeholder="Фамилия" #surNameInput [ngModel]="defaultSurName" name="surName" >
+      <input required type="text" class="form-control" id="form_surName" (input)="viewAlertMessage()" #surNameInput="ngModel" pattern="^[А-Яа-яЁё\-]+$" placeholder="Фамилия" [ngModel]="defaultSurName" name="surName" >
     </div>
     <div class="form-group col-md-4">
       <label for="form_firstName">Имя</label>
-      <input required type="text" class="form-control" id="form_firstName" placeholder="Имя" #nameInput="ngModel" [ngModel]="defaultFirstName" name="firstName">
+      <input required type="text" class="form-control" id="form_firstName" (input)="viewAlertMessage()" #nameInput="ngModel" placeholder="Имя" pattern="^[А-Яа-яЁё\-]+$" [ngModel]="defaultFirstName" name="firstName">
     </div>
     <div class="form-group col-md-4">
       <label for="patronymic">Отчество</label>
-      <input required type="text" class="form-control" id="patronymic" placeholder="Отчетство" #patronymicInput [ngModel]="defaultPatronymic" name="patronymic">
+      <input required type="text" class="form-control" id="patronymic" (input)="viewAlertMessage()" #patronymicInput="ngModel" placeholder="Отчетство" pattern="^[А-Яа-яЁё\-]+$" [ngModel]="defaultPatronymic" name="patronymic">
     </div>
   </div>
+  <p class="form_alert" *ngIf="alertMessageState">Нельзя вводить цифры, символы (кроме "-"), латинские буквы.</p>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="form_position">Должность</label>
-      <select required id="form_position" class="form-control" [ngModel]="defaultPosition" name="position">
-        <option selected value="Вратарь">Вратарь</option>
+      <select required id="form_position" class="form-control" [ngModel]="defaultPosition || 'Вратарь'" name="position">
+        <option value="Вратарь">Вратарь</option>
         <option value="Защитник">Защитник</option>
         <option value="Полузащитник">Полузащитник</option>
         <option value="Нападающий">Нападающий</option>
@@ -30,8 +31,8 @@
     </div>
     <div class="form-group col-md-4">
       <label for="form_state">Статус</label>
-      <select required id="form_state" class="form-control" [ngModel]="defaultState" name="state">
-        <option selected value="Работает">Работает</option>
+      <select required id="form_state" class="form-control" [ngModel]="defaultState || 'Работает'" name="state">
+        <option value="Работает">Работает</option>
         <option value="Уволен">Уволен</option>
       </select>
     </div>

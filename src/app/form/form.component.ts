@@ -30,6 +30,8 @@ export class FormComponent implements OnInit {
 
   imageFile: File;
 
+  alertMessageState: boolean = false;
+
 
   constructor(private matDialogRef: MatDialogRef<FormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,7 +41,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.setDefaultValues()
-    console.log(this.nameInput)
   }
 
   setDefaultValues() {
@@ -59,6 +60,14 @@ export class FormComponent implements OnInit {
     this.matDialogRef.close();
   }
 
+  viewAlertMessage() {
+    if ((this.nameInput.invalid && (this.nameInput.touched||this.nameInput.dirty))
+      ||(this.surNameInput.invalid && (this.surNameInput.touched || this.surNameInput.dirty))
+      ||(this.patronymicInput.invalid && (this.patronymicInput.touched || this.patronymicInput.dirty)))
+      this.alertMessageState = true;
+    else
+      this.alertMessageState = false;
+  }
 
 
   addEmployee() {

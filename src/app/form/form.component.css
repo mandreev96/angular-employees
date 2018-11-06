@@ -45,15 +45,17 @@
   margin-bottom: 14px;
 }
 
-input.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched.ng-dirty {
   border: 1px #ff0052 solid;
 }
 
-input.ng-invalid.ng-touched:focus {
+input.ng-invalid.ng-touched.ng-dirty:focus {
   border: transparent 1px solid;
 }
 
 .form_alert {
   padding-left: 15px;
-
+  margin-top: -10px;
+  font-size: 12px;
+  font-style: italic;
 }
