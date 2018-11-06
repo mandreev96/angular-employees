@@ -4,7 +4,7 @@ export class Employee {
   patronymic: string;
   dateOfBirth: string;
   position: string;
-  state: boolean;
+  state: string;
   comment: string | null;
   photo: string | null;
   key?: string;

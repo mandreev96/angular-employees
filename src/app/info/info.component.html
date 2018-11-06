@@ -20,7 +20,7 @@
         Должность: {{employee.position}}
       </div>
       <div class="info_state">
-        Статус: {{(employee.state) ? 'Работает' : 'Уволен'}}
+        Статус: {{employee.state}}
       </div>
       <div *ngIf="employee.comment" class="info_comment">
         Комментарии: {{employee.comment}}

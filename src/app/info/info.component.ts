@@ -29,6 +29,7 @@ export class InfoComponent implements OnInit, OnDestroy {
     this.employee = this.detailsService.employees[this.index];
     this.urlImage = this.detailsService.stateUrl;
     this.detailsService.getImage(this.employee.image, this.index);
+    console.log(this.employee.state)
   }
 
   ngOnDestroy() {

@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
       this.defaultSurName = this.data.employee.surName;
       this.defaultPatronymic = this.data.employee.patronymic;
       this.defaultPosition = this.data.employee.position;
-      this.defaultState = this.data.employee.state ? 'Работает' : 'Уволен';
+      this.defaultState = this.data.employee.state;
       this.defaultDateOfBirth = this.data.employee.dateOfBirth;
       this.defaultComment = this.data.employee.comment;
       this.defaultImage = this.data.employee.image;
@@ -83,7 +83,7 @@ export class FormComponent implements OnInit {
 
 
   editEmployee() {
-    if (this.imageFile) this.form.value.image = true;
+    if (this.imageFile || this.data.employee.image) this.form.value.image = true;
     else this.form.value.image = false;
     this.details.editEmployee(this.data.index, this.form.value, this.imageFile);
     this.matDialogRef.close();

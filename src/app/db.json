@@ -6,7 +6,7 @@
       "patronymic":"Евгеньевич",
       "dateOfBirth":"1991-11-13",
       "position":"Вратарь",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -16,7 +16,7 @@
       "patronymic":"Владимирович",
       "dateOfBirth":"1987-01-21",
       "position":"Вратарь",
-      "state":true,
+      "state": "Работает",
       "comment":"Динамо",
       "image": false
     },
@@ -26,7 +26,7 @@
       "patronymic":"Тамазович",
       "dateOfBirth":"1993-11-21",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Спартак",
       "image": false
     },
@@ -36,7 +36,7 @@
       "patronymic":"Васильевич",
       "dateOfBirth":"1987-04-05",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Рубин",
       "image": false
     },
@@ -46,7 +46,7 @@
       "patronymic":"Набиуллин",
       "dateOfBirth":"1995-03-08",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -56,7 +56,7 @@
       "patronymic":"Викторович",
       "dateOfBirth":"1990-03-15",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Динамо",
       "image": false
     },
@@ -66,7 +66,7 @@
       "patronymic":"Александрович",
       "dateOfBirth":"1988-08-08",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -76,7 +76,7 @@
       "patronymic":"Фигейра",
       "dateOfBirth":"1990-09-19",
       "position":"Защитник",
-      "state":true,
+      "state": "Работает",
       "comment":"ЦСКА",
       "image": false
     },
@@ -86,7 +86,7 @@
       "patronymic":"Александрович",
       "dateOfBirth":"1989-07-20",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Краснодар",
       "image": false
     },
@@ -96,7 +96,7 @@
       "patronymic":"Юрьевич",
       "dateOfBirth":"1989-10-13",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -106,7 +106,7 @@
       "patronymic":"Сергеевич",
       "dateOfBirth":"1994-02-11",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Спартак",
       "image": false
     },
@@ -116,7 +116,7 @@
       "patronymic":"Сергеевич",
       "dateOfBirth":"1989-02-18",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Ростов",
       "image": false
     },
@@ -126,7 +126,7 @@
       "patronymic":"Адьямович",
       "dateOfBirth":"1993-01-15",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -136,7 +136,7 @@
       "patronymic":"Дмитриевич",
       "dateOfBirth":"1990-12-26",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Валенсия",
       "image": false
     },
@@ -146,7 +146,7 @@
       "patronymic":"Сергеевич",
       "dateOfBirth":"1996-05-30",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Монако",
       "image": false
     },
@@ -156,7 +156,7 @@
       "patronymic":"Андреевич",
       "dateOfBirth":"1995-10-17",
       "position":"Полузащитник",
-      "state":true,
+      "state": "Работает",
       "comment":"Локомотив",
       "image": false
     },
@@ -166,7 +166,7 @@
       "patronymic":"Сергеевич",
       "dateOfBirth":"1988-08-22",
       "position":"Нападающий",
-      "state":true,
+      "state": "Работает",
       "comment":"Зенит",
       "image": false
     },
@@ -176,7 +176,7 @@
       "patronymic":"Константинович",
       "dateOfBirth":"1991-06-13",
       "position":"Нападающий",
-      "state":true,
+      "state": "Работает",
       "comment":"Гений",
       "image": false
     },
@@ -186,7 +186,7 @@
       "patronymic":"Александрович",
       "dateOfBirth":"1991-03-19",
       "position":"Нападающий",
-      "state":false,
+      "state": "Уволен",
       "comment":"Зенит",
       "image": false
     },
@@ -196,7 +196,7 @@
       "patronymic":"Николаевич",
       "dateOfBirth":"1998-04-10",
       "position":"Нападающий",
-      "state":true,
+      "state": "Работает",
       "comment":"ЦСКА",
       "image": false
     }
