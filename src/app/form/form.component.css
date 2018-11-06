@@ -42,4 +42,18 @@
 
 .form-row_flex {
   justify-content: space-around;
+  margin-bottom: 14px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px #ff0052 solid;
+}
+
+input.ng-invalid.ng-touched:focus {
+  border: transparent 1px solid;
+}
+
+.form_alert {
+  padding-left: 15px;
+
 }

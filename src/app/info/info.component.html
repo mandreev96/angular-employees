@@ -3,8 +3,9 @@
     <i class="fa fa-arrow-left" aria-hidden="true"></i>
   </div>
   <!-- -->
-  <div class="info_photo">
-    <i *ngIf="!urlImage.url" class="fa fa-camera info_camera" aria-hidden="true"></i>
+  <div class="info_photo" [ngStyle]="{'background': (employee.image) ? 'transparent' : '#d2dff7'}">
+    <i *ngIf="employee.image" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw info_spin"></i>
+    <i *ngIf="!employee.image" class="fa fa-camera info_camera" aria-hidden="true"></i>
     <img class="info_image" [src]="urlImage.url" alt="">
   </div>
   <div class="info_mainBox">

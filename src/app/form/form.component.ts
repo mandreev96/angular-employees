@@ -15,6 +15,9 @@ export class FormComponent implements OnInit {
 
   @ViewChild('formTag') formTag;
   @ViewChild('form') form;
+  @ViewChild('nameInput') nameInput;
+  @ViewChild('surNameInput') surNameInput;
+  @ViewChild('patronymicInput') patronymicInput;
   employee: Employee;
   defaultFirstName: string;
   defaultSurName: string;
@@ -36,6 +39,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.setDefaultValues()
+    console.log(this.nameInput)
   }
 
   setDefaultValues() {

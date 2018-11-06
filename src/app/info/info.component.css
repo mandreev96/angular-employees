@@ -18,6 +18,16 @@
   position: relative;
 }
 
+.info_spin {
+  font-size: 48px;
+  display: block;
+  color: #212153c9;
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  z-index: -1;
+}
+
 .info_camera {
   font-size: 48px;
   display: block;
@@ -31,6 +41,7 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
+  z-index: 1;
 }
 
 .info_mainBox {
