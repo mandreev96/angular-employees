@@ -27,7 +27,7 @@
     </div>
     <div class="form-group col-md-4">
       <label for="form_dateOfBirth">Дата рождения</label>
-      <input required type="date" max="2018-01-01" class="form-control" id="form_dateOfBirth" [ngModel]="defaultDateOfBirth" name="dateOfBirth">
+      <input required type="date" max="2018-01-01" class="form-control" id="form_dateOfBirth" #dateOfBirthInput="ngModel" [ngModel]="defaultDateOfBirth" name="dateOfBirth">
     </div>
     <div class="form-group col-md-4">
       <label for="form_state">Статус</label>
@@ -56,10 +56,10 @@
       <input type="file" ngModel name="imageState" (change)="selectedPicture($event)" accept="image/jpeg,image/png">
     </div>
   </div>
-
+  <p *ngIf="alertMessageSend" class="form_alert">Заполните все обязательные поля (Имя, фамилия, отчество, дата рождения).</p>
   <div class="form_buttons">
-    <button *ngIf="!data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="addEmployee()">Добавить</button>
-    <button *ngIf="data.edit" type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="editEmployee()">Сохранить</button>
+    <button *ngIf="!data.edit" type="submit" class="btn btn-primary btn-submit" (click)="addEmployee()">Добавить</button>
+    <button *ngIf="data.edit" type="submit"  class="btn btn-primary btn-submit" (click)="editEmployee()">Сохранить</button>
     <button (click)="closeForm()" type="reset" class="btn btn-secondary">Отменить</button>
   </div>
 </form>

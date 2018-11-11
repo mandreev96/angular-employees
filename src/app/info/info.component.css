@@ -73,3 +73,8 @@
   flex-basis: 50%;
 }
 
+.info_comment {
+  max-width: 500px;
+  max-height: 300px;
+  overflow: hidden;
+}

@@ -269,12 +269,23 @@ export class DetailsService {
   editEmployee(index: number, employee: Employee, file: File) {
     this.db.list('/employees').update(this.employeesObj[index].key, employee)
       .then(() => {
+        this.changeAlertState(2);
         if (file) {
-          this.storageRef.child(`/photos/${this.employeesObj[index].key}`).put(file);
+          this.stateUrl.url = '';
+          this.storageRef.child(`/photos/${this.employeesObj[index].key}`).put(file)
+            .then(() => {
+              this.storageRef.child(`/photos/${this.employeesObj[index].key}`)
+                .getDownloadURL()
+                .then((url) => {
+                  this.stateUrl.url = url;
+                  })
+            });
+
         }
-      });
-    this.changeAlertState(2);
+      })
   }
+
+
 
   deleteImage(index: number) {
     this.storageRef.child(`/photos/${this.employeesObj[index].key}`).delete()

@@ -27,8 +27,7 @@ export class AskDeleteComponent implements OnInit {
 
   deleteImage() {
     this.details.deleteImage(this.data.index);
-    this.matDialogRef.close();
-    this.location.back();
+    this.matDialogRef.close({closePopup: true, deleteImage: true});
   }
 
   cancel() {

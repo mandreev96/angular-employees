@@ -7,6 +7,7 @@ import {MatDialog} from "@angular/material";
 import {FormComponent} from "../form/form.component";
 import {AskDeleteComponent} from "../ask-delete/ask-delete.component";
 
+
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -23,14 +24,15 @@ export class InfoComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private location: Location,
     public dialog: MatDialog
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.employee = this.detailsService.employees[this.index];
     this.urlImage = this.detailsService.stateUrl;
     this.detailsService.getImage(this.employee.image, this.index);
-    console.log(this.employee.state)
   }
+
 
   ngOnDestroy() {
     this.urlImage.url = '';
@@ -49,8 +51,11 @@ export class InfoComponent implements OnInit, OnDestroy {
   }
 
   openForm() {
-    this.dialog.open(FormComponent, {data: {edit: true, employee: this.employee, index: this.index}});
+    this.dialog.open(FormComponent, {data: {edit: true, employee: this.employee, index: this.index}})
+      .afterClosed().subscribe(result => {
+        this.employee = result;
+        this.urlImage = this.detailsService.stateUrl;
+    })
   }
-
 
 }

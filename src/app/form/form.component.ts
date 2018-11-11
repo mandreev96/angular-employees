@@ -18,6 +18,7 @@ export class FormComponent implements OnInit {
   @ViewChild('nameInput') nameInput;
   @ViewChild('surNameInput') surNameInput;
   @ViewChild('patronymicInput') patronymicInput;
+  @ViewChild('dateOfBirthInput') dateOfBirthInput;
   employee: Employee;
   defaultFirstName: string;
   defaultSurName: string;
@@ -31,13 +32,17 @@ export class FormComponent implements OnInit {
   imageFile: File;
 
   alertMessageState: boolean = false;
+  alertMessageSend: boolean = false;
 
+  testUrl;
 
   constructor(private matDialogRef: MatDialogRef<FormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private details: DetailsService,
               private location: Location,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog) {
+
+  }
 
   ngOnInit() {
     this.setDefaultValues()
@@ -57,7 +62,7 @@ export class FormComponent implements OnInit {
   }
 
   closeForm() {
-    this.matDialogRef.close();
+    this.matDialogRef.close(this.data.employee);
   }
 
   viewAlertMessage() {
@@ -67,14 +72,23 @@ export class FormComponent implements OnInit {
       this.alertMessageState = true;
     else
       this.alertMessageState = false;
+      this.alertMessageSend = false;
   }
 
+  checkInputs() {
+    if (!this.form.valid) {
+      this.alertMessageSend = true;
+    } else this.alertMessageSend = false;
+  }
 
   addEmployee() {
-    if (this.imageFile) this.form.value.image = true;
-    else this.form.value.image = false;
-    this.details.addEmployee(this.form.value, this.imageFile);
-    this.matDialogRef.close();
+    this.checkInputs();
+    if (this.form.valid) {
+      if (this.imageFile) this.form.value.image = true;
+      else this.form.value.image = false;
+      this.details.addEmployee(this.form.value, this.imageFile);
+      this.matDialogRef.close();
+    }
   }
 
   selectedPicture(event: any) {
@@ -83,15 +97,24 @@ export class FormComponent implements OnInit {
 
 
   editEmployee() {
-    if (this.imageFile || this.data.employee.image) this.form.value.image = true;
-    else this.form.value.image = false;
-    this.details.editEmployee(this.data.index, this.form.value, this.imageFile);
-    this.matDialogRef.close();
-    this.location.back();
+    this.checkInputs();
+    if (this.form.valid) {
+      if (this.imageFile || this.data.employee.image) this.form.value.image = true;
+      else this.form.value.image = false;
+      this.details.editEmployee(this.data.index, this.form.value, this.imageFile);
+      this.matDialogRef.close(this.form.value)
+    }
   }
+
 
   askDeleteImage() {
     this.dialog.open(AskDeleteComponent, {data: {userDelete: false, hasImage: true, index: this.data.index}})
+      .afterClosed().subscribe(result => {
+        if (result.closePopup) {
+          this.form.value.image = false;
+          this.matDialogRef.close(this.form.value);
+        }
+    })
   }
 
   updatePhoto() {
